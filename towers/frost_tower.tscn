@@ -1,0 +1,264 @@
+[gd_scene load_steps=25 format=3]
+
+[sub_resource type="CylinderMesh" id="Foundation"]
+top_radius = 0.42
+bottom_radius = 0.48
+height = 0.20
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="BaseBand"]
+top_radius = 0.47
+bottom_radius = 0.47
+height = 0.065
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="UpperDeck"]
+top_radius = 0.35
+bottom_radius = 0.39
+height = 0.13
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="Pedestal"]
+top_radius = 0.24
+bottom_radius = 0.36
+height = 0.70
+radial_segments = 8
+
+[sub_resource type="CylinderMesh" id="PedestalCollar"]
+top_radius = 0.34
+bottom_radius = 0.37
+height = 0.12
+radial_segments = 8
+
+[sub_resource type="SphereMesh" id="CoreGem"]
+radius = 0.30
+height = 0.74
+radial_segments = 8
+rings = 5
+
+[sub_resource type="TorusMesh" id="CoreHalo"]
+inner_radius = 0.35
+outer_radius = 0.42
+rings = 12
+ring_segments = 8
+
+[sub_resource type="TorusMesh" id="FrostRing"]
+inner_radius = 0.22
+outer_radius = 0.27
+rings = 10
+ring_segments = 8
+
+[sub_resource type="CylinderMesh" id="IceShard"]
+top_radius = 0.025
+bottom_radius = 0.14
+height = 0.60
+radial_segments = 6
+
+[sub_resource type="CylinderMesh" id="EmitterTube"]
+top_radius = 0.13
+bottom_radius = 0.19
+height = 0.60
+radial_segments = 8
+
+[sub_resource type="CylinderMesh" id="EmitterMuzzle"]
+top_radius = 0.21
+bottom_radius = 0.21
+height = 0.12
+radial_segments = 8
+
+[sub_resource type="SphereMesh" id="EmitterLens"]
+radius = 0.14
+height = 0.28
+radial_segments = 10
+rings = 5
+
+[sub_resource type="BoxMesh" id="IceArmor"]
+size = Vector3(0.16, 0.32, 0.34)
+
+[sub_resource type="BoxMesh" id="FootBrace"]
+size = Vector3(0.12, 0.34, 0.14)
+
+[sub_resource type="SphereMesh" id="Bolt"]
+radius = 0.032
+height = 0.064
+radial_segments = 8
+rings = 4
+
+[sub_resource type="CylinderMesh" id="FrostSpike"]
+top_radius = 0.01
+bottom_radius = 0.09
+height = 0.28
+radial_segments = 6
+
+[sub_resource type="StandardMaterial3D" id="BlueStone"]
+albedo_color = Color(0.15, 0.20, 0.24, 1)
+roughness = 0.84
+metallic = 0.12
+
+[sub_resource type="StandardMaterial3D" id="ColdSteel"]
+albedo_color = Color(0.18, 0.26, 0.31, 1)
+roughness = 0.58
+metallic = 0.68
+
+[sub_resource type="StandardMaterial3D" id="DarkSteel"]
+albedo_color = Color(0.06, 0.09, 0.12, 1)
+roughness = 0.68
+metallic = 0.72
+
+[sub_resource type="StandardMaterial3D" id="FrostBlue"]
+albedo_color = Color(0.16, 0.43, 0.56, 1)
+roughness = 0.37
+metallic = 0.08
+
+[sub_resource type="StandardMaterial3D" id="CoreCyan"]
+albedo_color = Color(0.10, 0.45, 0.63, 1)
+roughness = 0.24
+metallic = 0.04
+emission_enabled = true
+emission = Color(0.035, 0.23, 0.37, 1)
+emission_energy_multiplier = 0.55
+
+[sub_resource type="StandardMaterial3D" id="IceFacet"]
+albedo_color = Color(0.37, 0.68, 0.77, 1)
+roughness = 0.32
+metallic = 0.05
+
+[sub_resource type="StandardMaterial3D" id="SilverTrim"]
+albedo_color = Color(0.36, 0.43, 0.47, 1)
+roughness = 0.47
+metallic = 0.76
+
+[sub_resource type="StandardMaterial3D" id="FrostAccent"]
+albedo_color = Color(0.20, 0.52, 0.66, 1)
+roughness = 0.30
+metallic = 0.04
+emission_enabled = true
+emission = Color(0.04, 0.20, 0.29, 1)
+emission_energy_multiplier = 0.32
+
+[node name="FrostTower" type="Node3D"]
+
+[node name="Base" type="MeshInstance3D" parent="."]
+mesh = SubResource("Foundation")
+material_override = SubResource("BlueStone")
+position = Vector3(0, 0.10, 0)
+
+[node name="BaseBand" type="MeshInstance3D" parent="."]
+mesh = SubResource("BaseBand")
+material_override = SubResource("SilverTrim")
+position = Vector3(0, 0.225, 0)
+
+[node name="UpperDeck" type="MeshInstance3D" parent="."]
+mesh = SubResource("UpperDeck")
+material_override = SubResource("DarkSteel")
+position = Vector3(0, 0.33, 0)
+
+[node name="FootBraceLeft" type="MeshInstance3D" parent="."]
+mesh = SubResource("FootBrace")
+material_override = SubResource("ColdSteel")
+position = Vector3(-0.25, 0.39, 0)
+rotation = Vector3(0, 0, -0.30)
+
+[node name="FootBraceRight" type="MeshInstance3D" parent="."]
+mesh = SubResource("FootBrace")
+material_override = SubResource("ColdSteel")
+position = Vector3(0.25, 0.39, 0)
+rotation = Vector3(0, 0, 0.30)
+
+[node name="Pedestal" type="MeshInstance3D" parent="."]
+mesh = SubResource("Pedestal")
+material_override = SubResource("BlueStone")
+position = Vector3(0, 0.68, 0)
+
+[node name="PedestalCollar" type="MeshInstance3D" parent="."]
+mesh = SubResource("PedestalCollar")
+material_override = SubResource("ColdSteel")
+position = Vector3(0, 1.04, 0)
+
+[node name="ArmorLeft" type="MeshInstance3D" parent="."]
+mesh = SubResource("IceArmor")
+material_override = SubResource("FrostBlue")
+position = Vector3(-0.28, 0.69, 0.03)
+rotation = Vector3(0, 0, -0.12)
+
+[node name="ArmorRight" type="MeshInstance3D" parent="."]
+mesh = SubResource("IceArmor")
+material_override = SubResource("FrostBlue")
+position = Vector3(0.28, 0.69, 0.03)
+rotation = Vector3(0, 0, 0.12)
+
+[node name="BaseBoltLeft" type="MeshInstance3D" parent="."]
+mesh = SubResource("Bolt")
+material_override = SubResource("SilverTrim")
+position = Vector3(-0.32, 0.27, -0.20)
+
+[node name="BaseBoltRight" type="MeshInstance3D" parent="."]
+mesh = SubResource("Bolt")
+material_override = SubResource("SilverTrim")
+position = Vector3(0.32, 0.27, -0.20)
+
+[node name="FrostSpikeLeft" type="MeshInstance3D" parent="."]
+mesh = SubResource("FrostSpike")
+material_override = SubResource("IceFacet")
+position = Vector3(-0.32, 0.42, 0.20)
+rotation = Vector3(0, 0, 0.20)
+
+[node name="FrostSpikeRight" type="MeshInstance3D" parent="."]
+mesh = SubResource("FrostSpike")
+material_override = SubResource("IceFacet")
+position = Vector3(0.32, 0.42, 0.20)
+rotation = Vector3(0, 0, -0.20)
+
+[node name="CrystalCore" type="Node3D" parent="."]
+position = Vector3(0, 0.98, 0)
+
+[node name="RotatingSaddle" type="MeshInstance3D" parent="CrystalCore"]
+mesh = SubResource("PedestalCollar")
+material_override = SubResource("DarkSteel")
+position = Vector3(0, -0.28, 0)
+
+[node name="CoreHalo" type="MeshInstance3D" parent="CrystalCore"]
+mesh = SubResource("CoreHalo")
+material_override = SubResource("SilverTrim")
+position = Vector3(0, 0.03, 0)
+rotation = Vector3(1.5708, 0.18, 0)
+
+[node name="CoreGem" type="MeshInstance3D" parent="CrystalCore"]
+mesh = SubResource("CoreGem")
+material_override = SubResource("CoreCyan")
+position = Vector3(0, 0.04, 0)
+
+[node name="EmitterTube" type="MeshInstance3D" parent="CrystalCore"]
+mesh = SubResource("EmitterTube")
+material_override = SubResource("ColdSteel")
+position = Vector3(0, -0.08, -0.43)
+rotation = Vector3(-1.5708, 0, 0)
+
+[node name="EmitterMuzzle" type="MeshInstance3D" parent="CrystalCore"]
+mesh = SubResource("EmitterMuzzle")
+material_override = SubResource("SilverTrim")
+position = Vector3(0, -0.08, -0.77)
+rotation = Vector3(1.5708, 0, 0)
+
+[node name="EmitterLens" type="MeshInstance3D" parent="CrystalCore"]
+mesh = SubResource("EmitterLens")
+material_override = SubResource("FrostAccent")
+position = Vector3(0, -0.08, -0.85)
+
+[node name="EmitterCoil" type="MeshInstance3D" parent="CrystalCore"]
+mesh = SubResource("FrostRing")
+material_override = SubResource("FrostAccent")
+position = Vector3(0, -0.08, -0.49)
+rotation = Vector3(1.5708, 0, 0)
+
+[node name="LeftShard" type="MeshInstance3D" parent="."]
+mesh = SubResource("IceShard")
+material_override = SubResource("IceFacet")
+position = Vector3(-0.32, 0.88, 0.02)
+rotation = Vector3(0.08, 0.0, -0.34)
+
+[node name="RightShard" type="MeshInstance3D" parent="."]
+mesh = SubResource("IceShard")
+material_override = SubResource("FrostAccent")
+position = Vector3(0.32, 0.88, 0.02)
+rotation = Vector3(-0.08, 0.0, 0.34)

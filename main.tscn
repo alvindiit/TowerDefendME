@@ -1,0 +1,18 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://towers/ranger_tower.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://towers/cannon_tower.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://towers/frost_tower.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://enemies/basic_enemy.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://towers/ankan_tower.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://enemies/MiangBoss.glb" id="7"]
+
+[node name="TowerDefendME" type="Node3D"]
+script = ExtResource("1")
+ranger_tower_model = ExtResource("2")
+cannon_tower_model = ExtResource("3")
+frost_tower_model = ExtResource("4")
+enemy_model = ExtResource("5")
+ankan_tower_model = ExtResource("6")
+miangboss_model = ExtResource("7")

@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3]
+
+[sub_resource type="CylinderMesh" id="BaseMesh"]
+top_radius = 0.36
+bottom_radius = 0.41
+height = 0.22
+radial_segments = 7
+
+[sub_resource type="CylinderMesh" id="TurretMesh"]
+top_radius = 0.30
+bottom_radius = 0.34
+height = 0.38
+radial_segments = 7
+
+[sub_resource type="CylinderMesh" id="BarrelMesh"]
+top_radius = 0.14
+bottom_radius = 0.18
+height = 0.72
+radial_segments = 7
+
+[sub_resource type="CylinderMesh" id="MuzzleMesh"]
+top_radius = 0.20
+bottom_radius = 0.20
+height = 0.13
+radial_segments = 7
+
+[sub_resource type="CylinderMesh" id="WheelMesh"]
+top_radius = 0.20
+bottom_radius = 0.20
+height = 0.12
+radial_segments = 7
+
+[sub_resource type="StandardMaterial3D" id="Bronze"]
+albedo_color = Color(0.36, 0.22, 0.13, 1)
+roughness = 0.48
+metallic = 0.38
+
+[sub_resource type="StandardMaterial3D" id="Iron"]
+albedo_color = Color(0.24, 0.29, 0.31, 1)
+roughness = 0.4
+metallic = 0.62
+
+[sub_resource type="StandardMaterial3D" id="DarkIron"]
+albedo_color = Color(0.10, 0.13, 0.15, 1)
+roughness = 0.48
+metallic = 0.55
+
+[node name="CannonTower" type="Node3D"]
+
+[node name="Base" type="MeshInstance3D" parent="."]
+mesh = SubResource("BaseMesh")
+material_override = SubResource("Bronze")
+position = Vector3(0, 0.11, 0)
+
+[node name="Turret" type="MeshInstance3D" parent="."]
+mesh = SubResource("TurretMesh")
+material_override = SubResource("Iron")
+position = Vector3(0, 0.40, 0)
+
+[node name="Barrel" type="MeshInstance3D" parent="."]
+mesh = SubResource("BarrelMesh")
+material_override = SubResource("DarkIron")
+position = Vector3(0, 0.61, -0.24)
+rotation = Vector3(1.5708, 0, 0)
+
+[node name="Muzzle" type="MeshInstance3D" parent="."]
+mesh = SubResource("MuzzleMesh")
+material_override = SubResource("Bronze")
+position = Vector3(0, 0.61, -0.60)
+rotation = Vector3(1.5708, 0, 0)
+
+[node name="LeftWheel" type="MeshInstance3D" parent="."]
+mesh = SubResource("WheelMesh")
+material_override = SubResource("DarkIron")
+position = Vector3(-0.33, 0.27, 0)
+rotation = Vector3(0, 0, 1.5708)
+
+[node name="RightWheel" type="MeshInstance3D" parent="."]
+mesh = SubResource("WheelMesh")
+material_override = SubResource("DarkIron")
+position = Vector3(0.33, 0.27, 0)
+rotation = Vector3(0, 0, 1.5708)

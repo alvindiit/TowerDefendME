@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3]
+
+[sub_resource type="CylinderMesh" id="FootingMesh"]
+top_radius = 0.34
+bottom_radius = 0.40
+height = 0.20
+radial_segments = 7
+
+[sub_resource type="CylinderMesh" id="SupportMesh"]
+top_radius = 0.18
+bottom_radius = 0.22
+height = 0.45
+radial_segments = 6
+
+[sub_resource type="CylinderMesh" id="PlatformMesh"]
+top_radius = 0.34
+bottom_radius = 0.34
+height = 0.12
+radial_segments = 7
+
+[sub_resource type="CylinderMesh" id="TowerBodyMesh"]
+top_radius = 0.22
+bottom_radius = 0.28
+height = 0.42
+radial_segments = 6
+
+[sub_resource type="SphereMesh" id="HelmetMesh"]
+radius = 0.28
+height = 0.44
+radial_segments = 6
+rings = 3
+
+[sub_resource type="BoxMesh" id="VisorMesh"]
+size = Vector3(0.28, 0.12, 0.035)
+
+[sub_resource type="StandardMaterial3D" id="Wood"]
+albedo_color = Color(0.35, 0.19, 0.13, 1)
+roughness = 0.78
+metallic = 0.03
+
+[sub_resource type="StandardMaterial3D" id="Stone"]
+albedo_color = Color(0.72, 0.85, 0.82, 1)
+roughness = 0.72
+
+[sub_resource type="StandardMaterial3D" id="Blue"]
+albedo_color = Color(0.20, 0.57, 0.70, 1)
+roughness = 0.4
+metallic = 0.08
+
+[sub_resource type="StandardMaterial3D" id="Dark"]
+albedo_color = Color(0.08, 0.13, 0.16, 1)
+roughness = 0.48
+metallic = 0.18
+
+[node name="RangerTower" type="Node3D"]
+
+[node name="Footing" type="MeshInstance3D" parent="."]
+mesh = SubResource("FootingMesh")
+material_override = SubResource("Wood")
+position = Vector3(0, 0.1, 0)
+
+[node name="Support" type="MeshInstance3D" parent="."]
+mesh = SubResource("SupportMesh")
+material_override = SubResource("Stone")
+position = Vector3(0, 0.405, 0)
+
+[node name="WoodPlatform" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlatformMesh")
+material_override = SubResource("Wood")
+position = Vector3(0, 0.68, 0)
+
+[node name="TowerBody" type="MeshInstance3D" parent="."]
+mesh = SubResource("TowerBodyMesh")
+material_override = SubResource("Stone")
+position = Vector3(0, 0.92, 0)
+
+[node name="BlueHelmet" type="MeshInstance3D" parent="."]
+mesh = SubResource("HelmetMesh")
+material_override = SubResource("Blue")
+position = Vector3(0, 1.27, 0)
+
+[node name="Visor" type="MeshInstance3D" parent="."]
+mesh = SubResource("VisorMesh")
+material_override = SubResource("Dark")
+position = Vector3(0, 1.26, -0.25)

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TowerDefendME — 3D Tower Defense</title>
+  <style>
+    :root{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#17202b;color:#f8fafc;display:grid;place-items:center;padding:20px}.game{width:min(1120px,100%)}header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 12px}h1{font-size:clamp(20px,3vw,28px);margin:0;letter-spacing:-.04em}.subtitle{color:#9fb2c3;font-size:13px;margin-top:3px}.hud{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.pill{background:#263546;border:1px solid #3d5063;border-radius:999px;padding:8px 13px;font-size:14px;font-weight:700;white-space:nowrap}.board{position:relative;overflow:hidden;border-radius:16px;border:1px solid #435364;background:#b3da87;box-shadow:0 20px 60px #0007}#scene{width:100%;height:auto;aspect-ratio:1100/650;display:block;cursor:crosshair}#scene canvas{width:100%;height:100%;display:block}.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 2px 0}#message{color:#c2d1dc;font-size:14px;min-height:20px}button{border:0;border-radius:9px;background:#ffd166;color:#33250b;padding:10px 16px;font:inherit;font-weight:800;cursor:pointer;box-shadow:0 3px 0 #bd8d27}button:hover{background:#ffdf91;transform:translateY(-1px)}button:disabled{opacity:.65;cursor:default;transform:none}.hint{margin-top:10px;color:#8599aa;font-size:12px;line-height:1.5}@media(max-width:650px){body{padding:10px}header{align-items:flex-start;flex-direction:column}.hud{justify-content:flex-start}.bar{align-items:flex-start}}
+  </style>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js"}}</script>
+</head>
+<body>
+  <main class="game">
+    <header><div><h1>🌿 TowerDefendME</h1><div class="subtitle">A tiny low-poly tower defense</div></div><div class="hud"><div class="pill">🪙 <span id="gold">120</span></div><div class="pill">❤️ <span id="lives">10</span></div><div class="pill">Wave <span id="wave">0</span></div></div></header>
+    <div class="board"><div id="scene" aria-label="3D isometric tower defense game board"></div></div>
+    <div class="bar"><div id="message">Place a tower on a stone pad, then start the first wave.</div><button id="waveButton">Start Wave</button></div>
+    <div class="hint">Click an empty stone tile to build a Ranger Tower (60 coins). Towers auto-target enemies in range. The board uses a fixed orthographic isometric camera.</div>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

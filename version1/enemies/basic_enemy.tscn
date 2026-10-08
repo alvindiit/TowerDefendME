@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3]
+
+[sub_resource type="SphereMesh" id="BodyMesh"]
+radius = 0.28
+height = 0.48
+radial_segments = 6
+rings = 3
+
+[sub_resource type="SphereMesh" id="EyeMesh"]
+radius = 0.055
+height = 0.09
+radial_segments = 5
+rings = 3
+
+[sub_resource type="PrismMesh" id="HornMesh"]
+size = Vector3(0.16, 0.22, 0.16)
+
+[sub_resource type="CylinderMesh" id="LegMesh"]
+top_radius = 0.025
+bottom_radius = 0.04
+height = 0.22
+radial_segments = 5
+
+[sub_resource type="StandardMaterial3D" id="BodyMaterial"]
+albedo_color = Color(0.86, 0.39, 0.16, 1)
+roughness = 0.76
+
+[sub_resource type="StandardMaterial3D" id="EyeMaterial"]
+albedo_color = Color(0.08, 0.10, 0.11, 1)
+roughness = 0.38
+metallic = 0.12
+
+[sub_resource type="StandardMaterial3D" id="HornMaterial"]
+albedo_color = Color(0.65, 0.18, 0.12, 1)
+roughness = 0.68
+
+[sub_resource type="StandardMaterial3D" id="LegMaterial"]
+albedo_color = Color(0.43, 0.24, 0.14, 1)
+roughness = 0.84
+
+[node name="BasicEnemy" type="Node3D"]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("BodyMesh")
+material_override = SubResource("BodyMaterial")
+scale = Vector3(1.15, 0.82, 1)
+
+[node name="LeftEye" type="MeshInstance3D" parent="."]
+mesh = SubResource("EyeMesh")
+material_override = SubResource("EyeMaterial")
+position = Vector3(-0.10, 0.05, -0.24)
+
+[node name="RightEye" type="MeshInstance3D" parent="."]
+mesh = SubResource("EyeMesh")
+material_override = SubResource("EyeMaterial")
+position = Vector3(0.10, 0.05, -0.24)
+
+[node name="LeftHorn" type="MeshInstance3D" parent="."]
+mesh = SubResource("HornMesh")
+material_override = SubResource("HornMaterial")
+position = Vector3(-0.20, 0.22, 0)
+rotation = Vector3(0, 0, 0.28)
+
+[node name="RightHorn" type="MeshInstance3D" parent="."]
+mesh = SubResource("HornMesh")
+material_override = SubResource("HornMaterial")
+position = Vector3(0.20, 0.22, 0)
+rotation = Vector3(0, 0, -0.28)
+
+[node name="LegFrontLeft" type="MeshInstance3D" parent="."]
+mesh = SubResource("LegMesh")
+material_override = SubResource("LegMaterial")
+position = Vector3(-0.20, -0.12, -0.10)
+rotation = Vector3(0, 0, 0.55)
+
+[node name="LegFrontRight" type="MeshInstance3D" parent="."]
+mesh = SubResource("LegMesh")
+material_override = SubResource("LegMaterial")
+position = Vector3(0.20, -0.12, -0.10)
+rotation = Vector3(0, 0, -0.55)
+
+[node name="LegBackLeft" type="MeshInstance3D" parent="."]
+mesh = SubResource("LegMesh")
+material_override = SubResource("LegMaterial")
+position = Vector3(-0.20, -0.12, 0.10)
+rotation = Vector3(0, 0, 0.55)
+
+[node name="LegBackRight" type="MeshInstance3D" parent="."]
+mesh = SubResource("LegMesh")
+material_override = SubResource("LegMaterial")
+position = Vector3(0.20, -0.12, 0.10)
+rotation = Vector3(0, 0, -0.55)

@@ -1,0 +1,289 @@
+[gd_scene load_steps=24 format=3]
+
+[sub_resource type="CylinderMesh" id="BaseMesh"]
+top_radius = 0.42
+bottom_radius = 0.48
+height = 0.22
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="BaseBand"]
+top_radius = 0.47
+bottom_radius = 0.47
+height = 0.065
+radial_segments = 12
+
+[sub_resource type="TorusMesh" id="BearingRing"]
+inner_radius = 0.31
+outer_radius = 0.37
+rings = 12
+ring_segments = 10
+
+[sub_resource type="CylinderMesh" id="TurretMesh"]
+top_radius = 0.31
+bottom_radius = 0.39
+height = 0.40
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="LowerTurret"]
+top_radius = 0.35
+bottom_radius = 0.35
+height = 0.12
+radial_segments = 10
+
+[sub_resource type="BoxMesh" id="TurretPlate"]
+size = Vector3(0.24, 0.18, 0.42)
+
+[sub_resource type="BoxMesh" id="SidePlate"]
+size = Vector3(0.10, 0.27, 0.42)
+
+[sub_resource type="CylinderMesh" id="BarrelMesh"]
+top_radius = 0.14
+bottom_radius = 0.19
+height = 0.84
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="BarrelMantlet"]
+top_radius = 0.24
+bottom_radius = 0.24
+height = 0.18
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="BarrelCollar"]
+top_radius = 0.205
+bottom_radius = 0.205
+height = 0.10
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="MuzzleMesh"]
+top_radius = 0.225
+bottom_radius = 0.225
+height = 0.16
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="MuzzleBore"]
+top_radius = 0.145
+bottom_radius = 0.145
+height = 0.018
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="WheelMesh"]
+top_radius = 0.14
+bottom_radius = 0.14
+height = 0.10
+radial_segments = 12
+
+[sub_resource type="BoxMesh" id="TrackPod"]
+size = Vector3(0.17, 0.23, 0.74)
+
+[sub_resource type="CylinderMesh" id="HingeMesh"]
+top_radius = 0.085
+bottom_radius = 0.085
+height = 0.10
+radial_segments = 10
+
+[sub_resource type="SphereMesh" id="BoltMesh"]
+radius = 0.035
+height = 0.07
+radial_segments = 8
+rings = 4
+
+[sub_resource type="CylinderMesh" id="AmmoMesh"]
+top_radius = 0.065
+bottom_radius = 0.075
+height = 0.27
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="Armor"]
+albedo_color = Color(0.15, 0.19, 0.21, 1)
+roughness = 0.58
+metallic = 0.74
+
+[sub_resource type="StandardMaterial3D" id="WornSteel"]
+albedo_color = Color(0.30, 0.34, 0.35, 1)
+roughness = 0.48
+metallic = 0.82
+
+[sub_resource type="StandardMaterial3D" id="DarkIron"]
+albedo_color = Color(0.075, 0.09, 0.10, 1)
+roughness = 0.62
+metallic = 0.78
+
+[sub_resource type="StandardMaterial3D" id="Bronze"]
+albedo_color = Color(0.36, 0.23, 0.13, 1)
+roughness = 0.57
+metallic = 0.68
+
+[sub_resource type="StandardMaterial3D" id="TrackRubber"]
+albedo_color = Color(0.055, 0.063, 0.06, 1)
+roughness = 0.9
+metallic = 0.04
+
+[sub_resource type="StandardMaterial3D" id="AmmoBrass"]
+albedo_color = Color(0.43, 0.31, 0.16, 1)
+roughness = 0.52
+metallic = 0.72
+
+[node name="CannonTower" type="Node3D"]
+
+[node name="Base" type="MeshInstance3D" parent="."]
+mesh = SubResource("BaseMesh")
+material_override = SubResource("DarkIron")
+position = Vector3(0, 0.11, 0)
+
+[node name="BaseArmorBand" type="MeshInstance3D" parent="."]
+mesh = SubResource("BaseBand")
+material_override = SubResource("Bronze")
+position = Vector3(0, 0.235, 0)
+
+[node name="BearingRing" type="MeshInstance3D" parent="."]
+mesh = SubResource("BearingRing")
+material_override = SubResource("WornSteel")
+position = Vector3(0, 0.275, 0)
+rotation = Vector3(1.5708, 0, 0)
+
+[node name="TrackPodLeft" type="MeshInstance3D" parent="."]
+mesh = SubResource("TrackPod")
+material_override = SubResource("TrackRubber")
+position = Vector3(-0.36, 0.20, 0)
+
+[node name="TrackPodRight" type="MeshInstance3D" parent="."]
+mesh = SubResource("TrackPod")
+material_override = SubResource("TrackRubber")
+position = Vector3(0.36, 0.20, 0)
+
+[node name="LeftWheel" type="MeshInstance3D" parent="."]
+mesh = SubResource("WheelMesh")
+material_override = SubResource("WornSteel")
+position = Vector3(-0.43, 0.20, 0)
+rotation = Vector3(0, 0, 1.5708)
+
+[node name="RightWheel" type="MeshInstance3D" parent="."]
+mesh = SubResource("WheelMesh")
+material_override = SubResource("WornSteel")
+position = Vector3(0.43, 0.20, 0)
+rotation = Vector3(0, 0, 1.5708)
+
+[node name="FrontRoadWheelLeft" type="MeshInstance3D" parent="."]
+mesh = SubResource("WheelMesh")
+material_override = SubResource("DarkIron")
+position = Vector3(-0.43, 0.20, -0.24)
+rotation = Vector3(0, 0, 1.5708)
+
+[node name="RearRoadWheelLeft" type="MeshInstance3D" parent="."]
+mesh = SubResource("WheelMesh")
+material_override = SubResource("DarkIron")
+position = Vector3(-0.43, 0.20, 0.24)
+rotation = Vector3(0, 0, 1.5708)
+
+[node name="FrontRoadWheelRight" type="MeshInstance3D" parent="."]
+mesh = SubResource("WheelMesh")
+material_override = SubResource("DarkIron")
+position = Vector3(0.43, 0.20, -0.24)
+rotation = Vector3(0, 0, 1.5708)
+
+[node name="RearRoadWheelRight" type="MeshInstance3D" parent="."]
+mesh = SubResource("WheelMesh")
+material_override = SubResource("DarkIron")
+position = Vector3(0.43, 0.20, 0.24)
+rotation = Vector3(0, 0, 1.5708)
+
+[node name="Turret" type="Node3D" parent="."]
+position = Vector3(0, 0.40, 0)
+
+[node name="LowerMantle" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("LowerTurret")
+material_override = SubResource("DarkIron")
+position = Vector3(0, -0.15, 0)
+
+[node name="ArmoredHousing" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("TurretMesh")
+material_override = SubResource("Armor")
+
+[node name="UpperArmorPlate" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("TurretPlate")
+material_override = SubResource("WornSteel")
+position = Vector3(0, 0.17, 0.02)
+
+[node name="LeftSideArmor" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("SidePlate")
+material_override = SubResource("Armor")
+position = Vector3(-0.27, 0.02, 0.02)
+
+[node name="RightSideArmor" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("SidePlate")
+material_override = SubResource("Armor")
+position = Vector3(0.27, 0.02, 0.02)
+
+[node name="LeftHinge" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("HingeMesh")
+material_override = SubResource("Bronze")
+position = Vector3(-0.31, 0.02, -0.08)
+rotation = Vector3(0, 0, 1.5708)
+
+[node name="RightHinge" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("HingeMesh")
+material_override = SubResource("Bronze")
+position = Vector3(0.31, 0.02, -0.08)
+rotation = Vector3(0, 0, 1.5708)
+
+[node name="AmmoCanisterLeft" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("AmmoMesh")
+material_override = SubResource("AmmoBrass")
+position = Vector3(-0.22, 0.17, 0.21)
+
+[node name="AmmoCanisterRight" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("AmmoMesh")
+material_override = SubResource("AmmoBrass")
+position = Vector3(0.22, 0.17, 0.21)
+
+[node name="Barrel" type="MeshInstance3D" parent="."]
+mesh = SubResource("BarrelMesh")
+material_override = SubResource("WornSteel")
+position = Vector3(0, 0.61, -0.29)
+rotation = Vector3(1.5708, 0, 0)
+
+[node name="RearReinforcement" type="MeshInstance3D" parent="Barrel"]
+mesh = SubResource("BarrelMantlet")
+material_override = SubResource("DarkIron")
+position = Vector3(0, 0.0, 0.28)
+
+[node name="BarrelBandA" type="MeshInstance3D" parent="Barrel"]
+mesh = SubResource("BarrelCollar")
+material_override = SubResource("Bronze")
+position = Vector3(0, 0.0, -0.20)
+
+[node name="BarrelBandB" type="MeshInstance3D" parent="Barrel"]
+mesh = SubResource("BarrelCollar")
+material_override = SubResource("DarkIron")
+position = Vector3(0, 0.0, -0.48)
+
+[node name="Muzzle" type="MeshInstance3D" parent="."]
+mesh = SubResource("MuzzleMesh")
+material_override = SubResource("Bronze")
+position = Vector3(0, 0.61, -0.76)
+rotation = Vector3(1.5708, 0, 0)
+
+[node name="BoreDark" type="MeshInstance3D" parent="Muzzle"]
+mesh = SubResource("MuzzleBore")
+material_override = SubResource("DarkIron")
+position = Vector3(0, 0.0, -0.082)
+
+[node name="TurretBoltFrontLeft" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("BoltMesh")
+material_override = SubResource("Bronze")
+position = Vector3(-0.22, 0.12, -0.19)
+
+[node name="TurretBoltFrontRight" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("BoltMesh")
+material_override = SubResource("Bronze")
+position = Vector3(0.22, 0.12, -0.19)
+
+[node name="TurretBoltRearLeft" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("BoltMesh")
+material_override = SubResource("Bronze")
+position = Vector3(-0.22, 0.12, 0.24)
+
+[node name="TurretBoltRearRight" type="MeshInstance3D" parent="Turret"]
+mesh = SubResource("BoltMesh")
+material_override = SubResource("Bronze")
+position = Vector3(0.22, 0.12, 0.24)

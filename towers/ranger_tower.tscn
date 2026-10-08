@@ -1,0 +1,216 @@
+[gd_scene load_steps=22 format=3]
+
+[sub_resource type="CylinderMesh" id="BaseFoot"]
+top_radius = 0.37
+bottom_radius = 0.42
+height = 0.20
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="BaseTrim"]
+top_radius = 0.39
+bottom_radius = 0.39
+height = 0.055
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="SupportColumn"]
+top_radius = 0.16
+bottom_radius = 0.21
+height = 0.48
+radial_segments = 10
+
+[sub_resource type="BoxMesh" id="SupportBrace"]
+size = Vector3(0.09, 0.38, 0.11)
+
+[sub_resource type="CylinderMesh" id="Turntable"]
+top_radius = 0.34
+bottom_radius = 0.36
+height = 0.13
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="DeckRing"]
+top_radius = 0.32
+bottom_radius = 0.32
+height = 0.035
+radial_segments = 12
+
+[sub_resource type="BoxMesh" id="Receiver"]
+size = Vector3(0.39, 0.25, 0.43)
+
+[sub_resource type="BoxMesh" id="ArmorCheek"]
+size = Vector3(0.12, 0.19, 0.30)
+
+[sub_resource type="CylinderMesh" id="RifleBarrel"]
+top_radius = 0.075
+bottom_radius = 0.09
+height = 0.72
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="MuzzleBrake"]
+top_radius = 0.115
+bottom_radius = 0.10
+height = 0.14
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="OpticTube"]
+top_radius = 0.075
+bottom_radius = 0.07
+height = 0.28
+radial_segments = 10
+
+[sub_resource type="SphereMesh" id="OpticLens"]
+radius = 0.064
+height = 0.128
+radial_segments = 12
+rings = 6
+
+[sub_resource type="BoxMesh" id="Rail"]
+size = Vector3(0.075, 0.045, 0.48)
+
+[sub_resource type="BoxMesh" id="BipodLeg"]
+size = Vector3(0.045, 0.25, 0.045)
+
+[sub_resource type="SphereMesh" id="Fastener"]
+radius = 0.035
+height = 0.07
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="PaintedOlive"]
+albedo_color = Color(0.16, 0.23, 0.19, 1)
+roughness = 0.76
+metallic = 0.12
+
+[sub_resource type="StandardMaterial3D" id="DarkSteel"]
+albedo_color = Color(0.075, 0.095, 0.10, 1)
+roughness = 0.72
+metallic = 0.32
+
+[sub_resource type="StandardMaterial3D" id="WornSteel"]
+albedo_color = Color(0.25, 0.29, 0.28, 1)
+roughness = 0.67
+metallic = 0.38
+
+[sub_resource type="StandardMaterial3D" id="WarmComposite"]
+albedo_color = Color(0.27, 0.19, 0.12, 1)
+roughness = 0.82
+metallic = 0.0
+
+[sub_resource type="StandardMaterial3D" id="OpticGlass"]
+albedo_color = Color(0.035, 0.24, 0.27, 1)
+roughness = 0.24
+metallic = 0.12
+emission_enabled = true
+emission = Color(0.015, 0.16, 0.18, 1)
+emission_energy_multiplier = 0.55
+
+[sub_resource type="StandardMaterial3D" id="Rubber"]
+albedo_color = Color(0.045, 0.055, 0.05, 1)
+roughness = 0.92
+
+[node name="RangerTower" type="Node3D"]
+
+[node name="Footing" type="MeshInstance3D" parent="."]
+mesh = SubResource("BaseFoot")
+surface_material_override/0 = SubResource("DarkSteel")
+position = Vector3(0, 0.11, 0)
+
+[node name="FootingBand" type="MeshInstance3D" parent="."]
+mesh = SubResource("BaseTrim")
+surface_material_override/0 = SubResource("WarmComposite")
+position = Vector3(0, 0.21, 0)
+
+[node name="Support" type="MeshInstance3D" parent="."]
+mesh = SubResource("SupportColumn")
+surface_material_override/0 = SubResource("PaintedOlive")
+position = Vector3(0, 0.425, 0)
+
+[node name="BraceLeft" type="MeshInstance3D" parent="."]
+mesh = SubResource("SupportBrace")
+surface_material_override/0 = SubResource("WornSteel")
+position = Vector3(-0.19, 0.43, 0)
+rotation = Vector3(0, 0, -0.42)
+
+[node name="BraceRight" type="MeshInstance3D" parent="."]
+mesh = SubResource("SupportBrace")
+surface_material_override/0 = SubResource("WornSteel")
+position = Vector3(0.19, 0.43, 0)
+rotation = Vector3(0, 0, 0.42)
+
+[node name="WoodPlatform" type="Node3D" parent="."]
+position = Vector3(0, 0.68, 0)
+
+[node name="Turntable" type="MeshInstance3D" parent="WoodPlatform"]
+mesh = SubResource("Turntable")
+surface_material_override/0 = SubResource("DarkSteel")
+
+[node name="DeckRing" type="MeshInstance3D" parent="WoodPlatform"]
+mesh = SubResource("DeckRing")
+surface_material_override/0 = SubResource("WornSteel")
+position = Vector3(0, 0.087, 0)
+
+[node name="TowerBody" type="Node3D" parent="."]
+position = Vector3(0, 0.91, 0)
+
+[node name="ArmoredReceiver" type="MeshInstance3D" parent="TowerBody"]
+mesh = SubResource("Receiver")
+surface_material_override/0 = SubResource("PaintedOlive")
+
+[node name="CheekLeft" type="MeshInstance3D" parent="TowerBody"]
+mesh = SubResource("ArmorCheek")
+surface_material_override/0 = SubResource("WarmComposite")
+position = Vector3(-0.235, -0.01, -0.025)
+
+[node name="CheekRight" type="MeshInstance3D" parent="TowerBody"]
+mesh = SubResource("ArmorCheek")
+surface_material_override/0 = SubResource("WarmComposite")
+position = Vector3(0.235, -0.01, -0.025)
+
+[node name="Barrel" type="MeshInstance3D" parent="TowerBody"]
+mesh = SubResource("RifleBarrel")
+surface_material_override/0 = SubResource("DarkSteel")
+position = Vector3(0, 0.19, -0.39)
+rotation = Vector3(-1.5708, 0, 0)
+
+[node name="MuzzleBrake" type="MeshInstance3D" parent="TowerBody"]
+mesh = SubResource("MuzzleBrake")
+surface_material_override/0 = SubResource("WornSteel")
+position = Vector3(0, 0.19, -0.79)
+rotation = Vector3(-1.5708, 0, 0)
+
+[node name="OpticRail" type="MeshInstance3D" parent="TowerBody"]
+mesh = SubResource("Rail")
+surface_material_override/0 = SubResource("DarkSteel")
+position = Vector3(0, 0.16, -0.16)
+
+[node name="BipodLeft" type="MeshInstance3D" parent="TowerBody"]
+mesh = SubResource("BipodLeg")
+surface_material_override/0 = SubResource("DarkSteel")
+position = Vector3(-0.12, -0.16, -0.34)
+rotation = Vector3(0, 0, -0.38)
+
+[node name="BipodRight" type="MeshInstance3D" parent="TowerBody"]
+mesh = SubResource("BipodLeg")
+surface_material_override/0 = SubResource("DarkSteel")
+position = Vector3(0.12, -0.16, -0.34)
+rotation = Vector3(0, 0, 0.38)
+
+[node name="BlueHelmet" type="MeshInstance3D" parent="."]
+mesh = SubResource("OpticTube")
+surface_material_override/0 = SubResource("DarkSteel")
+position = Vector3(0, 1.18, -0.12)
+rotation = Vector3(-1.5708, 0, 0)
+
+[node name="Visor" type="MeshInstance3D" parent="."]
+mesh = SubResource("OpticLens")
+surface_material_override/0 = SubResource("OpticGlass")
+position = Vector3(0, 1.18, -0.27)
+
+[node name="FastenerLeft" type="MeshInstance3D" parent="TowerBody"]
+mesh = SubResource("Fastener")
+surface_material_override/0 = SubResource("WornSteel")
+position = Vector3(-0.205, 0.0, -0.08)
+
+[node name="FastenerRight" type="MeshInstance3D" parent="TowerBody"]
+mesh = SubResource("Fastener")
+surface_material_override/0 = SubResource("WornSteel")
+position = Vector3(0.205, 0.0, -0.08)
